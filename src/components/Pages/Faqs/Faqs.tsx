@@ -30,7 +30,7 @@ const Faqs: React.FC = () => {
     return (
         <>
             <div className="bg-[#F2F6FB] py-6">
-                <h1 className="text-3xl md:text-4xl font-medium text-left mt-6 text-zinc-800 mx-6 md:mx-0">
+                <h1 className="text-3xl md:text-4xl font-medium text-center mt-6 text-zinc-800 mx-6 md:mx-0">
                     Frequently Asked Questions
                 </h1>
 
