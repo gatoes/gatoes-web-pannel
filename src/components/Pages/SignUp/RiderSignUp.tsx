@@ -53,16 +53,16 @@ const RiderSignUp: React.FC = () => {
       >
         <header className="text-white px-4 md:px-16 lg:px-36 py-4 flex justify-between items-center">
           <a href="/">
-            <img src={Logo} alt="Logo" className="h-8 md:h-10" />
+            <img src={Logo} alt="Logo" className="h-6 md:h-8" />
           </a>
-          <div className="flex space-x-4 md:space-x-6">
+          <div className="flex space-x-0 md:space-x-6">
             <a href="https://devmerchant.trestplus.com/dashboard">
-              <button className="text-[#5E5C66] px-4 md:px-6 py-2 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+              <button className="text-[#5E5C66] px-2 md:px-6 py-2 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
                 Partner With Us
               </button>
             </a>
             <a href="/ride">
-              <button className="text-[#5E5C66] px-4 md:px-6 py-2 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+              <button className="text-[#5E5C66] px-2 md:px-6 py-2 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
                 Ride With Us
               </button>
             </a>

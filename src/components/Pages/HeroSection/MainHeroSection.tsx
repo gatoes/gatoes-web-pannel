@@ -17,14 +17,14 @@ const MainHeroSection: React.FC = () => {
             <a href="/">
               <img src={Logo} alt="Logo" className="h-6 md:h-8" />
             </a>
-            <div className="flex space-x-4 md:space-x-6">
+            <div className="flex space-x-0 md:space-x-6">
               <a href="https://devmerchant.trestplus.com/dashboard">
-                <button className="font-sans font-semibold text-[#5E5C66] px-4 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+                <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
                   Partner With Us
                 </button>
               </a>
               <a href="/ride">
-                <button className="font-sans text-[#5E5C66] font-semibold px-4 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+                <button className="font-sans text-[#5E5C66] font-semibold px-2 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
                   Ride With Us
                 </button>
               </a>

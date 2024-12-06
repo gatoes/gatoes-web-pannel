@@ -15,7 +15,7 @@ const Testimonials: React.FC = () => {
           initial={{ x: '4%' }}  // Start from right
           animate={{ x: '-50%' }}  // Move to left
           transition={{
-            x: { repeat: Infinity, repeatType: 'loop', duration: 15, ease: 'linear' },
+            x: { repeat: Infinity, repeatType: 'loop', duration: 4, ease: 'linear' },
           }}
         >
           {testimonialData.map(({ id, image, quote, name, role }) => (
