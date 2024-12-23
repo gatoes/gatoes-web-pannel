@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import signup from '../../../assets/images/signup.png';
 import { motion } from 'framer-motion';
 import Logo from '../../../assets/images/Logo.png';
-import {toast, ToastContainer} from 'react-toastify'
 
 interface FormData {
   fullName: string;
@@ -54,13 +53,13 @@ const RiderSignUp: React.FC = () => {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Error Response:', errorData);
-        toast.error(`Error: ${errorData.message || 'Something went wrong'}`);
+        alert(`Error: ${errorData.message || 'Something went wrong'}`);
         return;
       }
   
       const data = await response.json();
       console.log('Success:', data);
-      toast.success('Sign-up successful!');
+      alert('Sign-up successful!');
       
       // Optionally reset the form after successful submission
       setFormData({
@@ -71,8 +70,8 @@ const RiderSignUp: React.FC = () => {
         countryCode: '91',
       });
     } catch (error) {
-      toast.error('Error:', error);
-      toast.error('There was an issue with the sign-up process. Please try again.');
+      console.error('Error:', error);
+      alert('There was an issue with the sign-up process. Please try again.');
     }
   };
   
@@ -103,7 +102,7 @@ const RiderSignUp: React.FC = () => {
           </div>
         </header>
       </motion.div>
-  <ToastContainer />
+
       <div className="py-12 px-4 bg-gradient-to-b from-green-50 to-white flex flex-col items-center justify-center">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 w-full max-w-screen-xl">
           {/* Left Section */}
