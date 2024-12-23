@@ -4,24 +4,58 @@ import { IoMdThumbsUp, IoMdThumbsDown } from "react-icons/io";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+interface Faq {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+interface RatedFaq {
+  hasLiked: boolean;
+  hasDisliked: boolean;
+}
+
 const Faqs: React.FC = () => {
-  const [faqs, setFaqs] = useState([]);
+  const [faqs, setFaqs] = useState<Faq[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [ratedFaqs, setRatedFaqs] = useState<Record<string, RatedFaq>>({});
+
+  // Load ratedFaqs from localStorage on mount
+  useEffect(() => {
+    const storedRatedFaqs = localStorage.getItem("ratedFaqs");
+    if (storedRatedFaqs) {
+      setRatedFaqs(JSON.parse(storedRatedFaqs));
+    }
+  }, []);
+
+  // Save ratedFaqs to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("ratedFaqs", JSON.stringify(ratedFaqs));
+  }, [ratedFaqs]);
 
   useEffect(() => {
     const fetchFaqsData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://localhost:6969/api/v1/user/rateFaq"
-        );
+        const response = await fetch("http://localhost:6969/api/v1/user/rateFaq");
         if (!response.ok) {
           throw new Error("Failed to fetch FAQs");
         }
         const data = await response.json();
         setFaqs(data.data);
+
+        // Merge existing ratedFaqs with new FAQs
+        setRatedFaqs((prev) => {
+          const updatedRatedFaqs = { ...prev };
+          data.data.forEach(({ id }) => {
+            if (!updatedRatedFaqs[id]) {
+              updatedRatedFaqs[id] = { hasLiked: false, hasDisliked: false };
+            }
+          });
+          return updatedRatedFaqs;
+        });
       } catch (error) {
         console.error("Error fetching FAQ data:", error);
         setError("Failed to load FAQ data");
@@ -39,6 +73,19 @@ const Faqs: React.FC = () => {
   };
 
   const handleFeedback = async (id: string, rating: number) => {
+    console.log("Button clicked for id:", id, "rating:", rating);
+    console.log("ratedFaqs[id]?.hasLiked:", ratedFaqs[id]?.hasLiked);
+
+    // Check if the FAQ is already rated
+    if (rating === 1 && ratedFaqs[id]?.hasLiked) {
+      toast.error("You have already liked this FAQ!");
+      return;
+    }
+    if (rating === 0 && ratedFaqs[id]?.hasDisliked) {
+      toast.error("You have already disliked this FAQ!");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:6969/api/v1/user/rating", {
         method: "POST",
@@ -62,14 +109,16 @@ const Faqs: React.FC = () => {
         rating === 1
           ? "Thanks for your positive feedback!"
           : "Thanks for your feedback!";
-      toast(message, {
-        position: "top-right",
-        autoClose: 1000,
-        closeOnClick: false,
-        progressClassName: "progress-bar",
-        hideProgressBar: false,
-        bodyClassName: "italic text-gray-800",
-      });
+      toast.success(message);
+
+      // Update the ratedFaqs state
+      setRatedFaqs((prev) => ({
+        ...prev,
+        [id]: {
+          hasLiked: rating === 1 ? true : prev[id]?.hasLiked || false,
+          hasDisliked: rating === 0 ? true : prev[id]?.hasDisliked || false,
+        },
+      }));
     } catch (error) {
       console.error("Error submitting feedback:", error);
       toast.error("Failed to submit feedback");
@@ -77,11 +126,11 @@ const Faqs: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Show loading indicator
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-red-600">{error}</div>; // Display error message
+    return <div className="text-red-600">{error}</div>;
   }
 
   return (
@@ -124,13 +173,23 @@ const Faqs: React.FC = () => {
                       <div className="flex space-x-4 mt-2">
                         <button
                           onClick={() => handleFeedback(id, 1)} // 1 for positive feedback
-                          className="flex items-center text-green-600 rounded-full bg-green-600 p-2 bg-opacity-10 hover:bg-green-200"
+                          className={`flex items-center text-green-600 rounded-full p-2 bg-opacity-10 ${
+                            ratedFaqs[id]?.hasLiked
+                              ? "bg-green-200"
+                              : "bg-green-600 hover:bg-green-200"
+                          }`}
+                          
                         >
                           <IoMdThumbsUp />
                         </button>
                         <button
                           onClick={() => handleFeedback(id, 0)} // 0 for negative feedback
-                          className="flex items-center text-red-600 rounded-full bg-red-600 p-2 bg-opacity-10 hover:bg-red-200"
+                          className={`flex items-center text-red-600 rounded-full p-2 bg-opacity-10 ${
+                            ratedFaqs[id]?.hasDisliked
+                              ? "bg-red-200 "
+                              : "bg-red-600 hover:bg-red-200"
+                          }`}
+                         
                         >
                           <IoMdThumbsDown />
                         </button>
