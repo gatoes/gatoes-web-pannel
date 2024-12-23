@@ -1,0 +1,15 @@
+
+
+
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+@keyframes slide {
+    from{margin-left: -100%;}
+    to{
+     margin-left: 0%;
+      }
+   }
+  
