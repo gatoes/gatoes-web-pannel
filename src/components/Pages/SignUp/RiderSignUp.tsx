@@ -30,8 +30,9 @@ const RiderSignUp: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  
     const output = {
       countryCode: formData.countryCode,
       mobileNumber: formData.phoneNumber,
@@ -39,9 +40,41 @@ const RiderSignUp: React.FC = () => {
       drivingLicense: formData.drivingLicense === 'yes',
       email: formData.email,
     };
-    console.log(output);
-    // Further processing can be added here, like sending data to an API.
+  
+    try {
+      const response = await fetch('http://localhost:6969/api/v1/user/addRiderPatner', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(output),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error Response:', errorData);
+        alert(`Error: ${errorData.message || 'Something went wrong'}`);
+        return;
+      }
+  
+      const data = await response.json();
+      console.log('Success:', data);
+      alert('Sign-up successful!');
+      
+      // Optionally reset the form after successful submission
+      setFormData({
+        fullName: '',
+        email: '',
+        phoneNumber: '',
+        drivingLicense: '',
+        countryCode: '91',
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an issue with the sign-up process. Please try again.');
+    }
   };
+  
 
   return (
     <>
