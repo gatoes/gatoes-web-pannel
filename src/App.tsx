@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <Router>
       <div className="flex min-h-screen flex-col">
         <RoutesComponent />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

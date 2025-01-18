@@ -22,7 +22,7 @@ const WorkSteps: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="bg-white rounded-[15px] overflow-hidden">
+          <div className="bg-white rounded-[20px] overflow-hidden">
             <img
               src={step1}
               alt="Order food"
@@ -39,7 +39,7 @@ const WorkSteps: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="bg-white rounded-[15px] overflow-hidden">
+          <div className="bg-white rounded-[20px] overflow-hidden">
             <img
               src={step2}
               alt="Choose restaurants"
@@ -56,7 +56,7 @@ const WorkSteps: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <div className="bg-white rounded-[15px] overflow-hidden">
+          <div className="bg-white rounded-[20px] overflow-hidden">
             <img
               src={step3}
               alt="Fast delivery"

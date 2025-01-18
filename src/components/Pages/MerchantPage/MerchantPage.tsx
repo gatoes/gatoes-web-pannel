@@ -2,6 +2,7 @@ import React from 'react';
 import appStore from '../../../assets/images/appStore.png';
 import googlePlay from '../../../assets/images/googlePlay.png';
 import Favicon from '../../../assets/images/Favicon.png';
+import  { constants } from '../../../utils/contants'
 
 const MerchantsPage: React.FC = () => {
   return (
@@ -24,14 +25,14 @@ const MerchantsPage: React.FC = () => {
       </p>
 
       <div className="flex space-x-4 mt-8">
-        <a href="hhttps://apps.apple.com/us/app/gatoes-food-grocery-delivery/id1519726781" target="_blank" rel="noopener noreferrer">
+        <a href={constants.AppStore} target="_blank" rel="noopener noreferrer">
           <img
             src={appStore}
             alt="Download on the App Store"
             className="w-40 h-auto"
           />
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.gatoes&hl=en_US&pli=1" target="_blank" rel="noopener noreferrer">
+        <a href={constants.Android} target="_blank" rel="noopener noreferrer">
           <img
             src={googlePlay}
             alt="Get it on Google Play"

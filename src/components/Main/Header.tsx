@@ -12,12 +12,12 @@ const Header: React.FC = () => {
       {/* Navigation Links */}
       <div className="flex space-x-0 md:space-x-6">
         <a href="https://devmerchant.trestplus.com">
-          <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-lg md:rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+          <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-lg md:rounded-[10px] bg-gray-300 hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
             Partner With Us
           </button>
         </a>
         <a href="/ride">
-          <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-lg md:rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
+          <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-lg md:rounded-[10px] bg-gray-300 hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
             Ride With Us
           </button>
         </a>

@@ -2,35 +2,14 @@ import React from 'react';
 import Logo from '../../../assets/images/Logo.png';
 import heroSectionImage from '../../../assets/images/heroSectioniImage.png';
 import { motion } from 'framer-motion';
+import { constants } from '../../../utils/contants';
+import Motionheader from '../../UI/Motionheader';
 
 const MainHeroSection: React.FC = () => {
   return (
     <>
       <div className="bg-gradient-to-b from-green-50 to-white m-0 p-0 overflow-hidden">
-        <motion.div
-          className=""
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <header className="text-white px-4 md:px-16 lg:px-52 py-4 flex justify-between items-center">
-            <a href="/">
-              <img src={Logo} alt="Logo" className="h-6 md:h-8" />
-            </a>
-            <div className="flex space-x-0 md:space-x-6">
-              <a href="https://devmerchant.trestplus.com/dashboard">
-                <button className="font-sans font-semibold text-[#5E5C66] px-2 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
-                  Partner With Us
-                </button>
-              </a>
-              <a href="/ride">
-                <button className="font-sans text-[#5E5C66] font-semibold px-2 py-2 md:px-6 md:py-3 rounded-[15px] hover:bg-[#06C17D] text-sm md:text-md hover:text-white transition duration-300">
-                  Ride With Us
-                </button>
-              </a>
-            </div>
-          </header>
-        </motion.div>
+       <Motionheader/>
 
         <div className="flex flex-col md:flex-row justify-between items-center relative z-10">
           <motion.div
@@ -53,7 +32,7 @@ const MainHeroSection: React.FC = () => {
             <img
               src={heroSectionImage}
               alt="Large Image"
-              className="rounded-[15px] object-cover h-[670px] w-auto -mr-36 z-10 -translate-y-8"
+              className="rounded-[20px] object-cover h-[670px] w-auto -mr-36 z-10 -translate-y-8"
             />
           </div>
         </div>
