@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import signup from '../../../assets/images/signup.png';
-import buildingsSVG from '../../../assets/svg/ic_bulding.svg';
 import { useApiMutation } from '../../../utils/useApi';
 import { apiConfig } from '../../../utils/api.config';
 
@@ -17,7 +16,7 @@ const DeleteUserForm: React.FC = () => {
     password:''
   });
 
-  const { mutate,  error,isPending } = useApiMutation(
+  const { mutate,isPending } = useApiMutation(
     apiConfig.deactivateAccountWeb,  // API endpoint to send data to
     'delete',       // HTTP method
     {
@@ -32,7 +31,7 @@ const DeleteUserForm: React.FC = () => {
           password:''
         });
       },
-      onError: (error) => {
+      onError: (error:any) => {
         console.error('Error adding product:', error.message);
         alert(error.message)
         // alert('There was an issue with the sign-up process. Please try again.');
@@ -51,9 +50,13 @@ const DeleteUserForm: React.FC = () => {
       await mutate(output)
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...e});
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setFormData({ ...e});
+  // };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
   };
+  
 
   return (
     <div

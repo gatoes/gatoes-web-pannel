@@ -1,8 +1,6 @@
 import React from 'react';
-import Logo from '../../../assets/images/Logo.png';
 import heroSectionImage from '../../../assets/images/heroSectioniImage.png';
 import { motion } from 'framer-motion';
-import { constants } from '../../../utils/contants';
 import Motionheader from '../../UI/Motionheader';
 
 const MainHeroSection: React.FC = () => {

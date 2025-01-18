@@ -1,16 +1,9 @@
-
-
-import React, { useMemo } from 'react';
-import { testimonialData } from './testimonialData';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { useApiQuery } from '../../../utils/useApi';
 import { apiConfig } from '../../../utils/api.config';
 import testimonialImage from '../../../assets/images/testimonialImage.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import Loading from '../../UI/Loading';
 // Interface for each FAQ item
 interface Feedback {
@@ -27,7 +20,7 @@ interface FeedbackResponse {
 
 
 const Testimonials: React.FC = () => {
-  const { data, isLoading, error } = useApiQuery<FeedbackResponse, Error>(
+  const { data, isLoading } = useApiQuery<FeedbackResponse, Error>(
     ['getFeedback'], // Query key
     apiConfig.getFeedback   // API endpoint (relative to the base URL)
   );
@@ -55,7 +48,7 @@ const Testimonials: React.FC = () => {
           }}
         >
 
-          {data?.data?.map(({ id, feedback, shopName, ownerName }) => (
+          {data?.data?.map(({ id, feedback, shopName, ownerName }:{id:number,feedback:any, shopName:any, ownerName:any}) => (
             <SwiperSlide key={id}>
               <div className="bg-[#F2F6FB] p-8 flex-shrink-0 ">
                 <img

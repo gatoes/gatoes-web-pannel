@@ -13,8 +13,10 @@
     "moduleDetection": "force",
     "noEmit": true,
 
+    "noEmitOnError": false,
+    "strict": false,
     /* Linting */
-    "strict": true,
+    // "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,

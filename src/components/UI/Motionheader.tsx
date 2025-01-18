@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion';
 import Logo from '../../assets/images/Logo.png';
 import { constants } from '../../utils/contants';

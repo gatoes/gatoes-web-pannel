@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Footer from './components/Main/Footer';
 import RoutesComponent from './components/routes'; 
 
 const App: React.FC = () => {

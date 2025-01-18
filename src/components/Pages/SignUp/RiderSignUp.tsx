@@ -31,7 +31,7 @@ const RiderSignUp: React.FC = () => {
     }
   };
 
-  const { mutate, isLoading, error } = useApiMutation(
+  const { mutate } = useApiMutation(
     apiConfig.addRiderPatner,  // API endpoint to send data to
     'post',       // HTTP method
     {
