@@ -18,7 +18,7 @@ const DeleteUserForm: React.FC = () => {
 
   const { mutate,isPending } = useApiMutation(
     apiConfig.deactivateAccountWeb,  // API endpoint to send data to
-    'delete',       // HTTP method
+    'post',       // HTTP method
     {
       onSuccess: (data) => {
         console.log('Product added successfully:', data);
@@ -46,7 +46,6 @@ const DeleteUserForm: React.FC = () => {
       password: formData.password,
       phoneNumber: formData.phoneNumber,
     };
-    console.log('Form submitted');
       await mutate(output)
   };
 
