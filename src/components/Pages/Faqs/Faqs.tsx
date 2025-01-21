@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useApiQuery } from "../../../utils/useApi";
 import { apiConfig } from "../../../utils/api.config";
 import Loading from "../../UI/Loading";
+import ErrorPage from "../../UI/ErrorMessage";
 
 interface FaqData {
   id: string;
@@ -22,11 +23,11 @@ const Faqs: React.FC = () => {
   );
    
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div> <Loading /></div>;
   }
 
   if (isError) {
-    return <div>Error loading FAQs: {error?.message}</div>;
+    return <ErrorPage />;
   }
   if (!data || !data.data) {
     return <div>No FAQs available</div>;
@@ -37,7 +38,7 @@ const Faqs: React.FC = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   if (isLoading) {
-    if (isLoading) return <Loading/>; // Show loading state
+    if (isLoading) return <Loading />; // Show loading state
   }
 
   if (error) {

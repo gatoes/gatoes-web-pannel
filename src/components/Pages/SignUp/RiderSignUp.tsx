@@ -3,6 +3,8 @@ import signup from '../../../assets/images/signup.png';
 import { useApiMutation } from '../../../utils/useApi';
 import { apiConfig } from '../../../utils/api.config';
 import Motionheader from '../../UI/Motionheader';
+import building from '../../../assets/svg/ic_bulding.svg'
+
 
 interface FormData {
   fullName: string;
@@ -83,11 +85,22 @@ const RiderSignUp: React.FC = () => {
               We are always looking for Pick-up and Delivery Partners who take
               exceptional pride in being a Hunger Saviour.
             </p>
-            <img
+            <div
+            className="relative mt-8 w-full max-w-md mx-auto lg:mx-0"
+            style={{
+              backgroundImage: `url(${building})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '8px',
+            }}
+          >
+         <img
               src={signup}
-              alt="Delivery Rider"
-              className="mt-0 w-full max-w-md mx-auto lg:mx-0"
+              alt="Signup Image"
+              className="w-full h-auto relative z-10"
+              // style={{ mixBlendMode: 'multiply' }}
             />
+          </div>
           </div>
 
           {/* Right Section */}
