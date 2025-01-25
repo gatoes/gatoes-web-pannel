@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import signup from '../../../assets/images/signup.png';
 import { useApiMutation } from '../../../utils/useApi';
-import { apiConfig } from '../../../utils/api.config';
+import { apiConfig } from '../../../utils/api.config'
+import building from '../../../assets/svg/ic_bulding.svg'
 
 
 interface FormData {
@@ -65,19 +66,30 @@ const DeleteUserForm: React.FC = () => {
       }}
     >
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full w-full max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-full w-full max-w-screen-xl mx-auto">   
+     
         {/* Left Side - 50% */}
         <div className="flex flex-col justify-center items-center lg:items-start">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-700 text-center lg:text-left">
             Do you want to delete <br /> <span className="text-[#119477]">the account?</span>
           </h1>
-          <img
-            src={signup}
-            alt="Delivery Rider"
-            className="mt-8 w-full max-w-md mx-auto lg:mx-0"
-          />
+          <div
+            className="relative mt-8 w-full max-w-md mx-auto lg:mx-0"
+            style={{
+              backgroundImage: `url(${building})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '8px',
+            }}
+          >
+         <img
+              src={signup}
+              alt="Signup Image"
+              className="w-full h-auto relative z-10"
+              // style={{ mixBlendMode: 'multiply' }}
+            />
+          </div>
         </div>
-
         {/* Right Side - 50% */}
         <div className="flex justify-center items-center">
           <div className="bg-white p-6 md:p-8 rounded-[20px] shadow-lg w-full lg:w-3/4 max-w-md">
